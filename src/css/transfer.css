@@ -1,0 +1,30 @@
+/* Add this CSS to your existing stylesheet */
+.transfer-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .transfer-form {
+    width: 100%; /* Adjust the width as needed */
+    padding: 20px;
+    border: 1px solid #ccc; /* Add a border to the form */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-control {
+   
+    width: 50%; /* Make input fields 100% width of the form */
+    padding: 10px;
+    margin-bottom: 10px; /* Add spacing between input fields */
+  }
+  .btn-block{
+    width: 50%;
+    padding: 10px;
+  
+   
+  }
+  
