@@ -35,7 +35,15 @@ function TransferPage() {
 
     if (payeeAcc != rePayeeAcc) {
       swal("Failed", "Payee Account Numbers doesn't match", "error");
-    } else {
+    } 
+    else if (payeeAcc === "" || payerAcc === "" || amount === 0) {
+      swal("Failed", "Fill All the Fields", "error");
+    }
+    
+    else if(payerAcc == payeeAcc){
+      swal("Failed", "Can't transfer fund to own account", "error")
+    }
+    else {
       
       const apiUrl =
         "https://x2axekjuc4.execute-api.us-east-1.amazonaws.com/dev/transaction";
@@ -53,12 +61,22 @@ function TransferPage() {
         .then((response) => {
           console.log("Response:", response.data);
           // alert(response.data.message)
-          swal("SUCCESS", response.data.message, "success");
+          swal("SUCCESS", response.data.message, "success").then(() => {
+            setPayerAcc("");
+            setPayeeAcc("");
+            setRePayeeAcc("");
+            setAmount(0);
+
+          document.getElementById("myaccount").value = "";
+          document.getElementById("payeeacc").value = "";
+          document.getElementById("repayeeacc").value = "";
+          document.getElementById("amount").value = "";
+          });
           
         })
         .catch((error) => {
           // alert("Transaction Failed")
-          swal("Failed", "Trasaction Failed", "error");
+          swal("Failed", "Trasaction Failed", "error")
           
         
         });
