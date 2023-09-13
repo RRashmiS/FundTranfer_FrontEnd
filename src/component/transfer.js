@@ -12,11 +12,26 @@ function TransferPage() {
   const [amount, setAmount] = useState(0);
   const [user, setUser] = useState("user1");
   const [errors, setErrors] = useState({});
-  
+  const[accounts,setAccounts] = useState([])
 
+    useEffect(() => {
+        const data = {
+            user: user,
+        };
+        const apiUrl = "https://x2axekjuc4.execute-api.us-east-1.amazonaws.com/dev/ownaccounts";
+
+        axios
+            .post(apiUrl, data)
+            .then((response) => {
+                const accountArray = response.data;
+                setAccounts(accountArray);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    }, []);
   function tranferMoney(e) {
     e.preventDefault();
-    console.log("clicked");
 
     if (payeeAcc != rePayeeAcc) {
       swal("Failed", "Payee Account Numbers doesn't match", "error");
@@ -39,10 +54,12 @@ function TransferPage() {
           console.log("Response:", response.data);
           // alert(response.data.message)
           swal("SUCCESS", response.data.message, "success");
+          
         })
         .catch((error) => {
           // alert("Transaction Failed")
           swal("Failed", "Trasaction Failed", "error");
+          
         
         });
     }
@@ -55,17 +72,23 @@ function TransferPage() {
       <div className="transfer-wrapper">
         <h2 className="text-center">Fund Transfering Form</h2>
         <form className="transfer-form">
-          <div className="form-group">
-           
-            <input
-              className="form-control"
-              type="number"
-              id="myaccount"
-              placeholder="My account Number"
-              onChange={(e) => setPayerAcc(e.target.value)}
-              required
-            />
-          </div>
+        <div className="form-group">
+  <label htmlFor="myaccount">My Account Number</label>
+  <select
+    className="form-control"
+    id="myaccount"
+    onChange={(e) => setPayerAcc(e.target.value)}
+    required
+  >
+    <option value="">Select an Account</option>
+    {accounts.map((account) => (
+      <option key={account.AccountNumber} value={account.AccountNumber}>
+        {account.AccountNumber}
+      </option>
+    ))}
+  </select>
+</div>
+
 
           <div className="form-group">
            

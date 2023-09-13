@@ -1,32 +1,32 @@
-/* landing.css */
-* {
+
+/* * {
     margin-left: 10px;
     margin-right: 10px;
   }
-  
+   */
   .card {
-    border: 1px solid #000; /* Add a border to the card */
-    padding: 10px; /* Add padding for spacing */
-    text-align: center; /* Center the content horizontally */
-    margin-bottom: 10px; /* Increase the gap between cards */
-    height: 30%;
+    border: 1px solid #000; 
+    padding: 10px; 
+    text-align: center; 
+    margin-bottom: 10px; 
+    height: 70%;
   }
   
   .card-title {
-    margin-bottom: 10px; /* Add spacing below the title */
+    margin-bottom: 10px; 
   }
   
   .card-text {
-    font-size: 18px; /* Increase font size for text */
+    font-size: 18px; 
   }
   
   .btn-transfer {
     background-color: #ccc;
     color: #000;
-    padding: 10px; /* Increase padding for button length */
+    padding: 10px; 
     border-radius: 5px;
     width: 100%;
-    margin-bottom: 10px; /* Add gap between button and cards */
+    margin-bottom: 10px; 
   }
   .donut-chart-container {
     width: 30%; 
