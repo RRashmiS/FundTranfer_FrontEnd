@@ -29,6 +29,7 @@ function LandingPage() {
     return (
         <div>
             <div className="landing-wrapper">
+            <h2 className="text-center mt-4">My Accounts</h2>
                 <Container>
                     <Row>
                         {accounts.map((account) => (
